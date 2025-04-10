@@ -1,10 +1,12 @@
 // bloomfilter.cpp file
 #include "BloomFilter.h"
 
-BloomFilter::BloomFilter(size_t size, const std::vector<std::shared_ptr<IHashFunction>>& hashFunctions)
-    : m_size(size), bitArray(size, false), hashFunctions(hashFunctions) {}
+// constructor 
 
-void BloomFilter::add(const std::string& item) {
+BloomFilter::BloomFilter(size_t size, const std::vector<std::shared_ptr<IHashFunction>>& hashFunctions)
+    : m_size(size), bitArray(size, false), hashFunctions(hashFunctions) {} 
+
+void BloomFilter::add(const std::string& item) { 
     for (const auto& hf : hashFunctions) {
         size_t hashValue = hf->hash(item);
         size_t index = hashValue % m_size;
