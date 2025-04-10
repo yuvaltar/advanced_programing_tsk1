@@ -20,12 +20,9 @@ public:
     
     // For persistence: get and set the internal bit array.
     const std::vector<bool>& getBitArray() const;
-    void setBitArray(const std::vector<bool>& bits);
     
 private:
-    size_t m_size;
-    std::vector<bool> bitArray;
-    std::vector<std::shared_ptr<IHashFunction>> hashFunctions;
+    void setBitArray(const std::vector<bool>& bits);
 };
 
 #endif // BLOOMFILTER_H
