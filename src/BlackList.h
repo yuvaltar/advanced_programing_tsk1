@@ -13,4 +13,4 @@ public:
     bool contains(const URL& url) const;
 };
 
-#endif // BLACKLIST_H
+#endif // BLACKLIST_H 

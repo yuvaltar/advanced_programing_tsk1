@@ -15,6 +15,7 @@ void BloomFilter::add(const URL& item) {            // 1 to add the url bit to t
         size_t hashValue = hf->hash(item.getURL()); // run the hash function on the url and get the hash value
         size_t index = hashValue % m_size;          // devide the hash value by the size of the array
         bitArray[index] = true;                     // mark the singhed bit as true
+        bl.addUrl(item);
     }
 }
 // to check if the url is in the black list
@@ -25,7 +26,7 @@ bool BloomFilter::possiblyContains(const URL& item) const { // 2
         if (!bitArray[index])                       // mark the singhed bit as true
             return false;                           // if the marked bits * doesnt * match return false
     }
-    return true;                                    // else true
+    return true;                                    // else true and check for false positive
 }
 // returns the bit array
 const std::vector<bool>& BloomFilter::getBitArray() const {
