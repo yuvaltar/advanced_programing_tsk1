@@ -4,6 +4,7 @@
 #include <iostream>
 //creating the URL class
 class URL{
+// class members
 private: 
     std::string url;
 
@@ -12,7 +13,7 @@ public:
 
     std::string getURL() const; //getURL function
 
-    // std::vector<size_t> hash(const std::vector<std::hash<std::string>>& hash_functions) const; //hash function
+    std::vector<size_t> hash(const std::vector<std::hash<std::string>>& hash_functions) const; //hash function
 
     bool operator==(const URL& compURL) const; //Creating == operator to check if 2 URL are the same
 
