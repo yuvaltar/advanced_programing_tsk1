@@ -8,49 +8,34 @@
 
 // --- Sample Hash Function Implementations ---
 
-// Uses the built-in std::hash.
-class StdHashFunction : public IHashFunction {
-public:
-    size_t hash(const std::string &s) const override {
-        return std::hash<std::string>{}(s);
-    }
-};
 
-// A simple "double hash" function demonstration.
-// It applies std::hash once to the input and then rehashes the result.
-class DoubleHashFunction : public IHashFunction {
-public:
-    size_t hash(const std::string &s) const override {
-        size_t h1 = std::hash<std::string>{}(s);
-        size_t h2 = std::hash<std::string>{}(std::to_string(h1));
-        // Combine the two values; here we XOR and shift as an example.
-        return h1 ^ (h2 << 1);
-    }
-};
 
 int main() {
     std::string configLine;
-    // Read the first configuration line (e.g., "256 2 1")
+    // read a line from keyboard
     if (!std::getline(std::cin, configLine)) {
-        return 1; // Exit if no configuration input is provided.
+        return 1; // Exit if no line provided
     }
     
-    std::istringstream configStream(configLine);
-    int filterSize;
-    configStream >> filterSize;
+    std::istringstream configStream(configLine); // Create a stream from the string configLine so we can read from it like it's input.
+
+    int filterSize; 
+
+    configStream >> filterSize; // putting the first argument into filter size 
     
     // The following integers indicate which hash functions to use:
     // 1 for StdHashFunction, 2 for DoubleHashFunction, etc.
     std::vector<std::shared_ptr<IHashFunction>> hashFunctions;
     int hashType;
+    // while there is still numbers from user aka (1,2...) like hash funcs
     while (configStream >> hashType) {
         if (hashType == 1) {
-            hashFunctions.push_back(std::make_shared<StdHashFunction>());
+            hashFunctions.push_back(std::make_shared<StdHashFunction>());       // for 1 push std into hash vector
         } else if (hashType == 2) {
-            hashFunctions.push_back(std::make_shared<DoubleHashFunction>());
+            hashFunctions.push_back(std::make_shared<DoubleHashFunction>());    // for 2 push Dstd into hash vector
         } else {
             // For any unsupported type, default to StdHashFunction.
-            hashFunctions.push_back(std::make_shared<StdHashFunction>());
+            hashFunctions.push_back(std::make_shared<StdHashFunction>());       // for unknown number use std
         }
     }
     // If no hash function is specified, default to one StdHashFunction.
@@ -94,3 +79,22 @@ int main() {
     
     return 0;
 }
+// Uses the built-in std::hash.
+// class StdHashFunction : public IHashFunction {
+// public:
+//     size_t hash(const std::string &s) const override {
+//         return std::hash<std::string>{}(s);
+//     }
+// };
+
+// // A simple "double hash" function demonstration.
+// // It applies std::hash once to the input and then rehashes the result.
+// class DoubleHashFunction : public IHashFunction {
+// public:
+//     size_t hash(const std::string &s) const override {
+//         size_t h1 = std::hash<std::string>{}(s);
+//         size_t h2 = std::hash<std::string>{}(std::to_string(h1));
+//         // Combine the two values; here we XOR and shift as an example.
+//         return h1 ^ (h2 << 1);
+//     }
+// };
