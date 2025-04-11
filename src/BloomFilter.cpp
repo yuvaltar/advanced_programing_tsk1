@@ -41,3 +41,4 @@ void BloomFilter::setBitArray(const std::vector<bool>& bits) {
         bitArray = bits;
     }
 }
+
