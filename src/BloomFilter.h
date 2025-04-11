@@ -5,7 +5,7 @@
 #include <vector>
 #include <memory>
 #include <string>
-#include "IHashFunctios.h"
+#include "IHashFunction.h"
 #include "url.h"
 #include "BlackList.h"
 
