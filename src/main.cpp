@@ -71,6 +71,7 @@ int main() {
             // Command "1 [URL]" means add the URL to the Bloom filter.
             
             bloom.add(newURL);
+            bl.addUrl(newURL);
         } else if (command == 2) {
             // Command "2 [URL]" means check if the URL is blacklisted.
             // Checks the bloomfilter itself

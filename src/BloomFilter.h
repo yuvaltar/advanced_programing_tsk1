@@ -25,8 +25,6 @@ private:
     std::vector<bool> bitArray;     // the bit array itself
     std::vector<std::shared_ptr<IHashFunction>> hashFunctions; // the specific has functions we use
 
-    BlackList bl;
-
     void setBitArray(const std::vector<bool>& bits);
 };
 
