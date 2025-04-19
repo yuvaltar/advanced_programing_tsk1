@@ -9,7 +9,7 @@
 BloomFilter::BloomFilter(size_t size, const std::vector<std::shared_ptr<IHashFunction>>& hashFunctions)
     : m_size(size), bitArray(size, false), hashFunctions(hashFunctions) {} 
 
-// too add the
+// too add the bit to the filter
 void BloomFilter::add(const URL& item) {            // 1 to add the url bit to the black list
     for (const auto& hf : hashFunctions) {          // getting an hash func and goes over them in for loop
         size_t hashValue = hf->hash(item.getURL()); // run the hash function on the url and get the hash value

@@ -11,10 +11,10 @@
 
 
 int main() {
-    std::string configLine;
+    std::string configLine; // define line 
     // read a line from keyboard
     if (!std::getline(std::cin, configLine)) {
-        return 1; // Exit if no line provided
+        return 1; // Exit if no line provided //// 8 1 2
     }
     
     std::istringstream configStream(configLine); // Create a stream from the string configLine so we can read from it like it's input.
@@ -25,9 +25,10 @@ int main() {
     
     // The following integers indicate which hash functions to use:
     // 1 for StdHashFunction, 2 for DoubleHashFunction, etc.
-    std::vector<std::shared_ptr<IHashFunction>> hashFunctions;
-    int hashType;
-    // while there is still numbers from user aka (1,2...) like hash funcs
+    std::vector<std::shared_ptr<IHashFunction>> hashFunctions; //pointer array to hash func objects
+
+    int hashType; 
+    // while there is still numbers from user aka (1,2...) like hash funcs // puts the hash func into the vector
     while (configStream >> hashType) {
         if (hashType == 1) {
             hashFunctions.push_back(std::make_shared<StdHashFunction>());       // for 1 push std into hash vector
