@@ -47,7 +47,7 @@ int main() {
     // Create the Bloom Filter using the specified bit array size and hash functions.
     BloomFilter bloom(filterSize, hashFunctions);
     
-    // Process commands in an infinite loop
+    // Process commands in an infinite loop // 1- add or 2-check
     std::string line;
     while (std::getline(std::cin, line)) {
         if (line.empty()) {
@@ -67,14 +67,14 @@ int main() {
         if (command == 1) {
             // Command "1 [URL]" means add the URL to the Bloom filter.
             URL newURL(url); 
-            bloom.add(newURL);
+            bloom.add(newURL); // call the add func of bm filter 
         } else if (command == 2) {
             // Command "2 [URL]" means check if the URL is blacklisted.
             // Since we don't have the blacklist manager yet, we simply output the Bloom filter's result.
             URL queryURL(url);
-            bool result = bloom.possiblyContains(queryURL);
+            bool result = bloom.possiblyContains(queryURL); // call the possiblycontains func of bm filter
             std::cout << (result ? "true" : "false") << std::endl;
-        }
+        } 
         // If the command does not match the expected format, the line is ignored.
     }
     
