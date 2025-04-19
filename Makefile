@@ -1,19 +1,23 @@
 # Compiler
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall
+CXXFLAGS = -std=c++17 -Wall -Isrc
 
 # Source files
-SRC = main.cpp BloomFilter.cpp BlackList.cpp HashFunctions.cpp
+SRC = src/main.cpp \
+      src/BloomFilter.cpp \
+      src/BlackList.cpp \
+      src/HashFunctions.cpp \
+      src/url.cpp
+
 OBJ = $(SRC:.cpp=.o)
 
-# Output binary
+# Output binary name
 TARGET = main
 
 # Build rule
 $(TARGET): $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJ)
 
-# Clean object files and binary
+# Clean up
 clean:
 	rm -f $(OBJ) $(TARGET)
-

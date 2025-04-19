@@ -31,7 +31,7 @@ int main() {
     // The following integers indicate which hash functions to use:
     // 1 for StdHashFunction, 2 for DoubleHashFunction, etc.
     std::vector<std::shared_ptr<IHashFunction>> hashFunctions; //pointer array to hash func objects
-
+    
     int hashType; 
     // while there is still numbers from user aka (1,2...) like hash funcs // puts the hash func into the vector
     while (configStream >> hashType) {
@@ -44,6 +44,7 @@ int main() {
             hashFunctions.push_back(std::make_shared<StdHashFunction>());       // for unknown number use std
         }
     }
+    
     // If no hash function is specified, default to one StdHashFunction.
     if (hashFunctions.empty()) {
         hashFunctions.push_back(std::make_shared<StdHashFunction>());
