@@ -1,3 +1,4 @@
+#make file
 # Compiler
 CXX = g++
 CXXFLAGS = -std=c++17 -Wall -Isrc
