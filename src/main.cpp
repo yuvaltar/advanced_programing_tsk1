@@ -5,6 +5,11 @@
 #include <vector>
 #include <memory>
 #include "BloomFilter.h" // Assumes BloomFilter and URL classes are declared here
+#include "url.h"
+#include "IHashFunctions.h"
+#include "StdHashFunction.h"
+#include "DoubleHashFunction.h"
+
 
 // --- Sample Hash Function Implementations ---
 

@@ -1,5 +1,6 @@
 // bloomfilter.cpp file
 #include "BloomFilter.h"
+#include "url.h"
 
 // class members
 
